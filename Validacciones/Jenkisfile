@@ -1,0 +1,83 @@
+def diaCompleto = new Date()
+def dias_letras =
+[1:"Lunes",
+2:"Martes",
+3:"Miércoles",
+4:"Jueves",
+5:"Viernes"
+]
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('Lunes')
+        {
+            steps
+            {   
+                script{
+                    //Lunes no hace nada
+                    if(dias_letras[1] == "Lunes")
+                    {
+                    }
+                }
+            }
+        }
+        stage('Martes')
+        {
+            steps
+            {
+                script{
+                    //Martes fecha actual
+                    if(dias_letras[2] == "Martes")
+                    {
+                        println diaCompleto
+                    }
+                }
+                
+            }
+        }
+        stage('Miércoles')
+        {
+            steps
+            {
+                script
+                {
+                    //Miércoles no hace nada
+                    if(dias_letras[3] == "Miércoles")
+                    {
+                       
+                    }
+                }
+            }
+        }
+        stage('Jueves')
+        {
+            steps
+            {
+                script
+                {
+                    //Jueves no hace nada
+                    if(dias_letras[3] == "Jueves")
+                    {
+                       
+                    }
+                }
+            }
+        }
+        stage('Viernes')
+        {
+            steps
+            {
+                script
+                {
+                    //Viernes
+                    if(dias_letras[5] == "Viernes")
+                    {
+                       println "El usuario que ejecuta la tarea es Quico Martínez"
+                    }
+                }
+            }
+        }
+    }
+}

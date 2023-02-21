@@ -1,4 +1,5 @@
 def diaCompleto = new Date()
+def dia =  new Date().getDay()
 def dias_letras =
 [1:"Lunes",
 2:"Martes",
@@ -6,6 +7,7 @@ def dias_letras =
 4:"Jueves",
 5:"Viernes"
 ]
+
 pipeline
 {
     agent any
@@ -17,7 +19,7 @@ pipeline
             {   
                 script{
                     //Lunes no hace nada
-                    if(dias_letras[1] == "Lunes")
+                    if(dia == 1)
                     {
                     }
                 }
@@ -29,7 +31,7 @@ pipeline
             {
                 script{
                     //Martes fecha actual
-                    if(dias_letras[2] == "Martes")
+                    if(dia == 2)
                     {
                         println diaCompleto
                     }
@@ -44,7 +46,7 @@ pipeline
                 script
                 {
                     //Miércoles no hace nada
-                    if(dias_letras[3] == "Miércoles")
+                    if(dia == 3)
                     {
                        
                     }
@@ -58,7 +60,7 @@ pipeline
                 script
                 {
                     //Jueves no hace nada
-                    if(dias_letras[4] == "Jueves")
+                    if(dia == 4)
                     {
                        
                     }
@@ -72,9 +74,16 @@ pipeline
                 script
                 {
                     //Viernes
-                    if(dias_letras[5] == "Viernes")
+                    if(dia == 5)
                     {
-                       println "El usuario que ejecuta la tarea es Quico Martínez"
+                        if (cause != null) {
+                            //Me da error el ejmplo para obtener el usuario
+                            def cause = currentBuild.rawBuild.getCause(Cause.UserIdCause)
+                            if (cause != null) {
+                                def user = cause.userId ?: 'anonymous'
+                                println "El usuario que ejecuta la tarea es ${user}"
+                            }
+                        }
                     }
                 }
             }

@@ -58,7 +58,7 @@ pipeline
                 script
                 {
                     //Jueves no hace nada
-                    if(dias_letras[3] == "Jueves")
+                    if(dias_letras[4] == "Jueves")
                     {
                        
                     }

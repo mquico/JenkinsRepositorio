@@ -23,7 +23,7 @@ pipeline
                     println "Suma de potencias: " + potencia
                     
                     def informacion = "Multiplicación: " + multiplicacion
-                    informacion+="\nSuma de pontencia : " + potencia
+                    informacion+="\nSuma de pontencia: " + potencia
                     
                     writeFile(file: "C:\\quico\\salida.txt", text: informacion)
                 }
